@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
+             x:Class="PLK__.FilterPage"
+             Title="Filter Items">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="Apply"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical">
+                <xfx:XfxEntry Placeholder="Type" TextColor="Black" Text="{Binding ItemType}" HeightRequest="50" Margin="20,0,20,0"/>
+                <xfx:XfxEntry Placeholder="Brand" TextColor="Black" Text="{Binding Brand}" HeightRequest="50" Margin="20,0,20,0"/>
+                <xfx:XfxEntry Placeholder="Location" TextColor="Black" Text="{Binding Location}" HeightRequest="50" Margin="20,0,20,0"/>
+                <xfx:XfxEntry Placeholder="PartName" TextColor="Black" Text="{Binding PartName}" HeightRequest="50" Margin="20,0,20,0"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PLK__.HomePage"
+             Title="Items">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="FilterItems" Name="Filter" />
+    </ContentPage.ToolbarItems>
+    <ListView x:Name="ItemsList" HasUnevenRows="True" ItemTapped="OnTap">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" Padding="5" VerticalOptions="StartAndExpand">
+                        <Image Source="http://cdn1.knowyourmobile.com/sites/knowyourmobilecom/files/styles/gallery_wide/public/2017/03/screen_shot_2017-03-29_at_17.33.49.png"
+                            WidthRequest="100" HeightRequest="100" HorizontalOptions="Start"/>
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="{Binding Brand, StringFormat='Brand: {0}'}" FontAttributes="Bold" />
+                            <Label Text="{Binding Price, StringFormat='Price: Rs.{0}/-'}" />
+                            <Label Text="{Binding ItemName, StringFormat='Item: {0}'}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>
