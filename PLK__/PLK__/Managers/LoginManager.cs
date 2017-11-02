@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace PLK__
 {
-    public class Login
+    public class LoginManager
     {
         public async Task<bool> GetProfile(string userName, string password)
         {

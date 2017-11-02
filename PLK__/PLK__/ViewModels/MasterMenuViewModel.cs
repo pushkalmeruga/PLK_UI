@@ -9,13 +9,17 @@ namespace PLK__
 {
     public class MasterMenuViewModel
     {
+        public string UserName { get; set; }
+
+        public byte[] ProfilePicture { get; set; }
+
         public static ObservableCollection<MasterMenu> GetMasterMenuItems()
         {
             return new ObservableCollection<MasterMenu>()
                 {
-                    new MasterMenu() {image =  "https://d30y9cdsu7xlg0.cloudfront.net/png/9355-200.png",DisplayName = "Profile"},
-                    new MasterMenu() {image =  "https://d30y9cdsu7xlg0.cloudfront.net/png/9355-200.png",DisplayName = "Sell Item"},
-                    new MasterMenu() {image =  "https://d30y9cdsu7xlg0.cloudfront.net/png/9355-200.png",DisplayName = "Logout"}
+                    new MasterMenu() {image =  "Profile.png",DisplayName = "Edit Profile"},
+                    new MasterMenu() {image =  "SellItem.png", DisplayName = "Sell Item"},
+                    new MasterMenu() {image =  "Logout.png", DisplayName = "Logout"}
                 };
         }
     }

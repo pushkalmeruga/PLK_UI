@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -18,6 +19,7 @@ namespace PLK__
         }
         private bool isCallRunning = false;
         private bool canSaveAsNewUser = true;
+
         public string UserName { get; set; }
         public string Password { get; set; }
         public string FirstName { get; set; }
@@ -25,6 +27,7 @@ namespace PLK__
         public string MobileNumber { get; set; }
         public string EmailId { get; set; }
         public string DefaultLocation { get; set; }
+        public byte[] ProfilePicture { get; set; }
         public bool CanSaveAsNewUser {
             get
             {
@@ -64,7 +67,7 @@ namespace PLK__
         {
             try
             {
-                Profile profile = new Profile();
+                ProfileManager profile = new ProfileManager();
                 string response;
 
                 IsCallRunning = true;
@@ -77,11 +80,11 @@ namespace PLK__
                 IsCallRunning = false;
 
                 if(response == "true")
-                    await Application.Current.MainPage.Navigation.PushAsync(new HamburgerPage(false));
+                    await Application.Current.MainPage.DisplayAlert("Info", "Profile saved !!", "Ok");
                 else
                     await Application.Current.MainPage.DisplayAlert("Failure", response, "Ok");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 IsCallRunning = false;
 

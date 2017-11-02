@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PLK__.ViewModels;
-using Plugin.Messaging;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -28,9 +27,9 @@ namespace PLK__
 
                 if (res)
                 {
-                    IPhoneCallTask phoneDialer = CrossMessaging.Current.PhoneDialer;
-                    if (phoneDialer.CanMakePhoneCall)
-                        phoneDialer.MakePhoneCall("9900595356");
+                    //IPhoneCallTask phoneDialer = CrossMessaging.Current.PhoneDialer;
+                    //if (phoneDialer.CanMakePhoneCall)
+                    //    phoneDialer.MakePhoneCall("9900595356");
                 }
             }
             catch (Exception ex)

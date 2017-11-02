@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
+             x:Class="PLK__.SellItem">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Post Item"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="20">
+                <xfx:XfxEntry x:Name="ItemType" Placeholder="Item Type" TextColor="Black" Text="{Binding ItemType}" Style="{StaticResource TextBoxStyle}"/>
+                <xfx:XfxEntry x:Name="PartName" Placeholder="Part Name" TextColor="Black" Text="{Binding PartName}" Style="{StaticResource TextBoxStyle}"/>
+                <xfx:XfxEntry x:Name="Model" Placeholder="Model" TextColor="Black" Text="{Binding Model}" Style="{StaticResource TextBoxStyle}"/>
+                <xfx:XfxEntry x:Name="Brand" Placeholder="Brand" TextColor="Black" Text="{Binding Brand}" Style="{StaticResource TextBoxStyle}"/>
+                <xfx:XfxEntry x:Name="Price" Placeholder="Price" TextColor="Black" Text="{Binding Price}" Style="{StaticResource TextBoxStyle}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

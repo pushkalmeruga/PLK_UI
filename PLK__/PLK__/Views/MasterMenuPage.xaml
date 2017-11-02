@@ -5,7 +5,7 @@
     <ListView x:Name="MenuItems" HasUnevenRows="True" ItemTapped="OnMenuItemTap">
         <ListView.ItemTemplate>
             <DataTemplate>
-                <ViewCell>                    
+                <ViewCell>
                     <StackLayout Orientation="Horizontal" Padding="10">
                         <Image Source="{Binding image}"
                             WidthRequest="25" HeightRequest="25" HorizontalOptions="Start"/>
@@ -15,8 +15,14 @@
             </DataTemplate>
         </ListView.ItemTemplate>
         <ListView.Header>
-            <StackLayout HeightRequest="50" VerticalOptions="FillAndExpand" BackgroundColor="Aqua">
-                <Label Text="SalesJungle.com" TextColor="Black" FontSize="Large" FontFamily="papyrus" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+            <StackLayout  HeightRequest="50" Orientation="Horizontal" Padding="10">
+                <StackLayout WidthRequest="30" Orientation="Vertical" Padding="0,0,0,10">
+                    <Image x:Name="ProfilePicture" Source="{Binding ProfilePicture}" HorizontalOptions="Start" WidthRequest="50" HeightRequest="50"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                    <Label Text="{Binding UserName}" TextColor="Black" FontSize="Medium" FontFamily="papyrus" />
+                </StackLayout>
+                
             </StackLayout>
         </ListView.Header>
     </ListView>

@@ -14,7 +14,7 @@ namespace PLK__
     {
         public MasterMenuPage()
         {
-            InitializeComponent();
+            InitializeComponent();           
 
             MenuItems.ItemsSource = MasterMenuViewModel.GetMasterMenuItems();
         }
@@ -27,18 +27,30 @@ namespace PLK__
 
             switch (masterMenu.DisplayName)
             {
-                case "Profile":
+                case "Edit Profile":
                     await Navigation.PushAsync(new ProfilePage());
                     break;
                 case "Logout":
-                    await new Login().Logout();
+                    await new LoginManager().Logout();
                     await Navigation.PushAsync(new LoginPage());
+                    break;
+                case "Sell Item":
+                    await Navigation.PushAsync(new SellItem());
                     break;
                 default:
                     await DisplayAlert("", "", "OK");
                     break;
 
             }            
+        }
+
+        protected override void OnAppearing()
+        {
+            var user = new SQLiteHelper().GetUserProfile();
+
+            BindingContext = new MasterMenuViewModel() { UserName = user.UserName, ProfilePicture = user.ProfilePicture };
+
+            ProfilePicture.Source = ImageHelper.ToImageSource(user.ProfilePicture);
         }
     }
 }

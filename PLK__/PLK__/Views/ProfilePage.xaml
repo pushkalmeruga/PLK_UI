@@ -5,40 +5,38 @@
              x:Class="PLK__.ProfilePage"
              Title="Profile Details">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="Save"/>
+        <ToolbarItem Name="Save" Command="{Binding SaveProfileCommand}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Orientation="Vertical">
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="10">
-                    <Image Source="https://d30y9cdsu7xlg0.cloudfront.net/png/9355-200.png"
+                    <Image x:Name="ProfilePicture" Source="{Binding ProfilePicture}"
                             WidthRequest="100" HeightRequest="100" HorizontalOptions="CenterAndExpand"/>
                 </StackLayout>
 
-                <Button Text="Change Profile Picture" BackgroundColor="Gray" TextColor="Black" HorizontalOptions="Center"/>
+                <Button Text="Change Profile Picture" BackgroundColor="Gray" TextColor="Black" HorizontalOptions="Center" Clicked="ChangeImageEvent"/>
 
-                <xfx:XfxEntry x:Name="FirstName" Placeholder="FirstName" TextColor="Black" Text="{Binding FirstName}" HeightRequest="50" Margin="20,0,20,0"/>
-                <xfx:XfxEntry x:Name="LastName" Placeholder="LastName" TextColor="Black" Text="{Binding LastName}" HeightRequest="50" Margin="20,0,20,0"/>
+                <xfx:XfxEntry x:Name="FirstName" Placeholder="FirstName" TextColor="Black" Text="{Binding FirstName}" Style="{StaticResource TextBoxStyle}"/>
+                <xfx:XfxEntry x:Name="LastName" Placeholder="LastName" TextColor="Black" Text="{Binding LastName}" Style="{StaticResource TextBoxStyle}"/>
                 <ActivityIndicator IsRunning="{Binding IsCallRunning}" Color="Black" IsVisible="{Binding IsCallRunning}"/>
                 <!--<Entry x:Name="Username" Placeholder="Username" TextColor="Black" Text="{Binding UserName}" IsEnabled="{Binding CanSaveAsNewUser}"/>-->
-                <xfx:XfxEntry x:Name="Username" Placeholder="Username" TextColor="Black" Text="{Binding UserName}" IsEnabled="{Binding CanSaveAsNewUser}" HeightRequest="50" Margin="20,0,20,0"/>
-                <xfx:XfxEntry x:Name="Password" Placeholder="Password" TextColor="Black" Text="{Binding Password}" IsPassword="True" HeightRequest="50" Margin="20,0,20,0"/>
-                <xfx:XfxEntry x:Name="Email" Placeholder="Email" TextColor="Black" Text="{Binding EmailId}" HeightRequest="50" Margin="20,0,20,0"/>
-                <xfx:XfxEntry x:Name="MobileNo" Placeholder="Mobile Number" TextColor="Black" Text="{Binding MobileNumber}" HeightRequest="50" Margin="20,0,20,0"/>
-                <xfx:XfxEntry x:Name="DefaultLocation" Placeholder="Enter Location" TextColor="Black" Text="{Binding DefaultLocation}" HeightRequest="50" Margin="20,0,20,0"/>
+                <xfx:XfxEntry x:Name="Username" Placeholder="Username" TextColor="Black" Text="{Binding UserName}" IsEnabled="{Binding CanSaveAsNewUser}" Style="{StaticResource TextBoxStyle}"/>
+                <xfx:XfxEntry x:Name="Password" Placeholder="Password" TextColor="Black" Text="{Binding Password}" IsPassword="True" Style="{StaticResource TextBoxStyle}"/>
+                <xfx:XfxEntry x:Name="Email" Placeholder="Email" TextColor="Black" Text="{Binding EmailId}" Style="{StaticResource TextBoxStyle}"/>
+                <xfx:XfxEntry x:Name="MobileNo" Placeholder="Mobile Number" TextColor="Black" Text="{Binding MobileNumber}" Style="{StaticResource TextBoxStyle}"/>
+                <xfx:XfxEntry x:Name="DefaultLocation" Placeholder="Enter Location" TextColor="Black" Text="{Binding DefaultLocation}" Style="{StaticResource TextBoxStyle}"/>
                 <Picker Title="Location" x:Name="LocationList">
-                    <Picker.Items/>
-                    <!--<x:String>Hyderabad</x:String>
+                    <Picker.Items>
+                        <x:String>Hyderabad</x:String>
                         <x:String>Bangalore</x:String>
                         <x:String>Vizag</x:String>
                         <x:String>Delhi</x:String>
                         <x:String>Amritsar</x:String>
                         <x:String>Ranchi</x:String>
-                    </Picker.Items>-->
+                    </Picker.Items>
                 </Picker>
-                <!--<Controls:BindablePicker ItemsSource="{Binding profile.DefaultLocation}" x:Name="pickerAlpha" Grid.Row="0" Grid.Column="1"/>-->
-                <!--<Button Text="Save" BackgroundColor="Black" TextColor="White" HorizontalOptions="Center" Command="{Binding SaveProfileCommand}"/>-->
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

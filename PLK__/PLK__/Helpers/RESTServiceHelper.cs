@@ -9,11 +9,9 @@ namespace PLK__
 {
     public class RESTServiceHelper
     {
-        //const string baseURL = "http://localhost:8080";
-        //const string baseURL = "http://10.0.2.2:8080";
-        const string baseURL = "http://192.168.0.108:8080";
+        const string baseURL = "http://172.18.0.53:8080";
 
-        public static async Task<HttpResponseMessage> GetData(string url)
+        public static async Task<string> GetData(string url)
         {
             HttpClient client = new HttpClient();
 
@@ -21,7 +19,7 @@ namespace PLK__
 
             HttpResponseMessage response = await client.GetAsync(url);
 
-            return response;
+            return await response.Content.ReadAsStringAsync();
         }
 
         public static async Task<string> PostData(string url, string json)

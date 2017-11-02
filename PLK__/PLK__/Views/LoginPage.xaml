@@ -3,12 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
              x:Class="PLK__.LoginPage"
-             BackgroundColor="#455460">
+             BackgroundColor="#78a3e8">
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Image Source="Logo.png" WidthRequest="200" HeightRequest="200"/>
+                <!--<Label Text="SalesJungle.com" TextColor="Black" FontSize="Large" FontAttributes="Bold"/>-->
+            </StackLayout>
             <StackLayout VerticalOptions="CenterAndExpand">
-                <xfx:XfxEntry x:Name="uname" Placeholder="Username" TextColor="Black" Text="{Binding Username}" FloatingHintEnabled="True" HeightRequest="50" Margin="20,0,20,0"/>
-                <xfx:XfxEntry x:Name="password" Placeholder="Password" TextColor="Black" Text="{Binding Password}" IsPassword="True" HeightRequest="50" Margin="20,0,20,0"/>
+                <xfx:XfxEntry x:Name="uname" Placeholder="Username" TextColor="Black" Text="{Binding Username}" FloatingHintEnabled="True" Style="{StaticResource TextBoxStyle}"/>
+                <xfx:XfxEntry x:Name="password" Placeholder="Password" TextColor="Black" Text="{Binding Password}" IsPassword="True" Style="{StaticResource TextBoxStyle}"/>
                 <Button Text="Login" BackgroundColor="White" TextColor="Black" Command = "{Binding GetProfileDetailsCommand}" Margin="20,0,20,0" />
                 <Button Text="Signup" BackgroundColor="White" TextColor="Black" Clicked = "RedirectToProfile" Margin="20,0,20,0"/>
                 <!--<Button Text="Sign In with Google" BackgroundColor="White" TextColor="Black" Command="{Binding GetProfileDetailsCommand}"/>-->

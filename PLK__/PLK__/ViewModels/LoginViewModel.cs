@@ -50,7 +50,7 @@ namespace PLK__
             try
             {
                 IsCallRunning = true;
-                bool isLoggedInSuccessfully = await new Login().GetProfile(this.Username, this.Password);
+                bool isLoggedInSuccessfully = await new LoginManager().GetProfile(this.Username, this.Password);
                 IsCallRunning = false;
                 if (isLoggedInSuccessfully)
                     await Application.Current.MainPage.Navigation.PushAsync(new HamburgerPage(false));

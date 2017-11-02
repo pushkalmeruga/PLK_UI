@@ -4,7 +4,13 @@
              x:Class="PLK__.App">
 	<Application.Resources>
 
-		<!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <Style x:Key="TextBoxStyle" TargetType="Entry">                
+                <Setter Property="Margin" Value="20,0,20,0" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+        </ResourceDictionary>
 
-	</Application.Resources>
+    </Application.Resources>
 </Application>

@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PLK__.HomePage"
+             x:Class="PLK__.ItemsListPage"
              Title="Items">
     <ContentPage.ToolbarItems>
         <ToolbarItem Clicked="FilterItems" Name="Filter" />
     </ContentPage.ToolbarItems>
-    <ListView x:Name="ItemsList" HasUnevenRows="True" ItemTapped="OnTap">
+    <ListView  HasUnevenRows="True" ItemTapped="OnTap" x:Name="itemsList">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>

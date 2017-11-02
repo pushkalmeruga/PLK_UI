@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace PLK__
 {
-    public class Profile
+    public class ProfileManager
     {
         public async Task<string> SaveProfile(ProfileViewModel userProfile)
         {
@@ -26,7 +26,8 @@ namespace PLK__
                         LastName = userProfile.LastName,
                         EmailId = userProfile.EmailId,
                         DefaultLocation = userProfile.DefaultLocation,
-                        MobileNumber = userProfile.MobileNumber
+                        MobileNumber = userProfile.MobileNumber,
+                        ProfilePicture = userProfile.ProfilePicture
                     });
 
                 string response = await RESTServiceHelper.PostData("/signup", jsonProfileDetails);
@@ -67,7 +68,8 @@ namespace PLK__
                         LastName = userProfile.LastName,
                         EmailId = userProfile.EmailId,
                         DefaultLocation = userProfile.DefaultLocation,
-                        MobileNumber = userProfile.MobileNumber
+                        MobileNumber = userProfile.MobileNumber,
+                        ProfilePicture = userProfile.ProfilePicture
                     });
 
                 string response = await RESTServiceHelper.PostData("/updateProfile", jsonProfileDetails);

@@ -12,13 +12,12 @@ using Xamarin.Forms.Xaml;
 namespace PLK__
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HomePage : ContentPage
+    public partial class ItemsListPage : ContentPage
     {       
-        public HomePage()
+        public ItemsListPage()
         {
             InitializeComponent();
-
-            ItemsList.ItemsSource = new ItemViewModel().ItemsList;
+            itemsList.ItemsSource = new ItemsListViewModel().ItemsList;
         }
 
         void OnTap(object sender, ItemTappedEventArgs e)
@@ -30,7 +29,7 @@ namespace PLK__
 
             DisplayAlert("Item Selected", "", "Ok");
 
-            Navigation.PushAsync(new ViewItemPage((Item)e.Item));
+            Navigation.PushAsync(new ViewItemCarouselPage((Item)e.Item));
                        
             ((ListView)sender).SelectedItem = null;
         }
