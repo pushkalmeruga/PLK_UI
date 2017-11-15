@@ -1,7 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PLK__"
              x:Class="PLK__.MasterMenuPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ByteToImageFieldConverter x:Key="ByteArrayToImage"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ListView x:Name="MenuItems" HasUnevenRows="True" ItemTapped="OnMenuItemTap">
         <ListView.ItemTemplate>
             <DataTemplate>
@@ -15,9 +23,9 @@
             </DataTemplate>
         </ListView.ItemTemplate>
         <ListView.Header>
-            <StackLayout  HeightRequest="50" Orientation="Horizontal" Padding="10">
+            <StackLayout  HeightRequest="80" Orientation="Horizontal" Padding="10" BackgroundColor="Teal">
                 <StackLayout WidthRequest="30" Orientation="Vertical" Padding="0,0,0,10">
-                    <Image x:Name="ProfilePicture" Source="{Binding ProfilePicture}" HorizontalOptions="Start" WidthRequest="50" HeightRequest="50"/>
+                    <Image x:Name="ProfilePicture" Source="{Binding ProfilePicture, Converter = {StaticResource ByteArrayToImage}}" HorizontalOptions="Start" WidthRequest="50" HeightRequest="50"/>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
                     <Label Text="{Binding UserName}" TextColor="Black" FontSize="Medium" FontFamily="papyrus" />

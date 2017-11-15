@@ -10,6 +10,12 @@
                 <Setter Property="HeightRequest" Value="50" />
                 <Setter Property="TextColor" Value="Black" />
             </Style>
+
+            <Style x:Key="LableStyle" TargetType="Label">
+                <Setter Property="Margin" Value="20,0,20,0" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
         </ResourceDictionary>
 
     </Application.Resources>

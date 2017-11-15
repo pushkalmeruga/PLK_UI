@@ -14,7 +14,11 @@ namespace PLK__
     {
         public MasterMenuPage()
         {
-            InitializeComponent();           
+            InitializeComponent();
+
+            var user = new SQLiteHelper().GetUserProfile();
+
+            BindingContext = new MasterMenuViewModel() { UserName = user.UserName, ProfilePicture = user.ProfilePicture };
 
             MenuItems.ItemsSource = MasterMenuViewModel.GetMasterMenuItems();
         }
@@ -32,7 +36,7 @@ namespace PLK__
                     break;
                 case "Logout":
                     await new LoginManager().Logout();
-                    await Navigation.PushAsync(new LoginPage());
+                    await Navigation.PopToRootAsync();
                     break;
                 case "Sell Item":
                     await Navigation.PushAsync(new SellItem());
@@ -44,13 +48,11 @@ namespace PLK__
             }            
         }
 
-        protected override void OnAppearing()
-        {
-            var user = new SQLiteHelper().GetUserProfile();
+        //protected override void OnAppearing()
+        //{
+        //    var user = new SQLiteHelper().GetUserProfile();
 
-            BindingContext = new MasterMenuViewModel() { UserName = user.UserName, ProfilePicture = user.ProfilePicture };
-
-            ProfilePicture.Source = ImageHelper.ToImageSource(user.ProfilePicture);
-        }
+        //    BindingContext = new MasterMenuViewModel() { UserName = user.UserName, ProfilePicture = user.ProfilePicture };
+        //}
     }
 }

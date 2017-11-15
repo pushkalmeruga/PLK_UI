@@ -10,42 +10,54 @@ namespace PLK__
 {
     class ItemsManager
     {      
-        public async Task<ObservableCollection<Item>> GetItems()
+        public async Task<ObservableCollection<Item>> GetItemsBasedOnFilter()
         {
-            SQLiteHelper sqlHelper = new SQLiteHelper();
-            ProfileViewModel profile = sqlHelper.GetUserProfile();
+            ProfileViewModel profile = new SQLiteHelper().GetUserProfile();
+
             var jsonFilterData = JsonConvert.SerializeObject(
                                    new
                                    {
-                                        ItemType = "",
-	                                    Brand = "",
-	                                    Model = "",
-	                                    PartName = "",
-	                                    CustomerUserName = "",
-                                        Location = profile.DefaultLocation
+                                        Location = profile.DefaultLocation,
+                                        IsSold = false
                                    });
-            string response = await RESTServiceHelper.PostData("/GetItems", jsonFilterData);
+
+            string response = await RESTServiceHelper.PostData("/GetItems", jsonFilterData).ConfigureAwait(false);
 
             var items = JsonConvert.DeserializeObject<ObservableCollection<Item>>(response);
 
             return items;
 
         }
-        public async void GetItemsBasedOnFilter()
+      
+
+        public async Task<bool> SaveItem(SellItemViewModel item)
         {
-            SQLiteHelper sqlHelper = new SQLiteHelper();
-            ProfileViewModel profile = sqlHelper.GetUserProfile();
-            var jsonFilterData = JsonConvert.SerializeObject(
-                   new
-                   {
-                       //UserName = userProfile.UserName,
-                       //Password = userProfile.Password,
-                       //FirstName = userProfile.FirstName,
-                       //LastName = userProfile.LastName,
-                       //EmailId = userProfile.EmailId,
-                       //DefaultLocation = userProfile.DefaultLocation,
-                       //MobileNumber = userProfile.MobileNumber
-                   });
-        }
+            try
+            {
+                var jsonData = JsonConvert.SerializeObject(
+                                       new
+                                       {
+                                           IsSold = item.IsSold,
+                                           ItemType = item.ItemType,
+                                           PartName = item.PartName,
+                                           CustomerUserName = item.CustomerUserName,
+                                           Model = item.Model,
+                                           Brand = item.Brand,
+                                           Price = item.Price,
+                                           MobileNumber = item.MobileNumber,
+                                           EmailId = item.EmailId,
+                                           Location = item.Location,
+                                           ItemImages = item.ItemImages
+                                       });
+
+                var result = await RESTServiceHelper.PostData("/saveItem", jsonData);
+
+                return bool.Parse(result);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }                       
     }
 }

@@ -30,9 +30,7 @@ namespace PLK__
                 {
                     BindingContext = profileViewModel = profile;
 
-                    if (profile.ProfilePicture != null)
-                        ProfilePicture.Source = ImageHelper.ToImageSource(profile.ProfilePicture);
-                    else
+                    if (profile.ProfilePicture == null)
                         ProfilePicture.Source = "Profile.png";
                 }
                 else

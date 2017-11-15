@@ -16,7 +16,9 @@ namespace PLK__
         {
             InitializeComponent();
 
-            BindingContext = new ViewItemViewModel(item);
+            ViewItemViewModel itemViewModel = new ViewItemViewModel(item);
+
+            BindingContext = itemViewModel;
         }
 
         private async void CallUser(object sender, EventArgs e)

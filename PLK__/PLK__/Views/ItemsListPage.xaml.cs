@@ -13,11 +13,12 @@ namespace PLK__
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemsListPage : ContentPage
-    {       
+    {
+        public ItemsListViewModel listViewModel = new ItemsListViewModel();
         public ItemsListPage()
         {
             InitializeComponent();
-            itemsList.ItemsSource = new ItemsListViewModel().ItemsList;
+            itemsList.ItemsSource = listViewModel.ItemsList;
         }
 
         void OnTap(object sender, ItemTappedEventArgs e)
@@ -27,9 +28,7 @@ namespace PLK__
                 return;
             }
 
-            DisplayAlert("Item Selected", "", "Ok");
-
-            Navigation.PushAsync(new ViewItemCarouselPage((Item)e.Item));
+            Navigation.PushAsync(new ViewItemPage((Item)e.Item));
                        
             ((ListView)sender).SelectedItem = null;
         }

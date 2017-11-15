@@ -5,7 +5,7 @@
                   x:Class="PLK__.HamburgerPage"
                   Padding="0,0,0,0">
     <MasterDetailPage.Master>
-        <Local:MasterMenuPage Title="Menu Items"/>
+        <Local:MasterMenuPage Title="Menu Items" WidthRequest="50"/>
     </MasterDetailPage.Master>
 
     <MasterDetailPage.Detail>

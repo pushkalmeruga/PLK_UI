@@ -19,29 +19,29 @@ namespace PLK__
             {
                 if (_itemsList == null)
                 {
-                    //return GetItemsBasedOnFilter().Result;
-                    return new ObservableCollection<Item>()
-                    {
-                        new Item {Brand = "Samsung",ItemName = "Camera",Price = 100 },
-                        new Item {Brand = "ASUS",ItemName = "Camera",Price = 140 },
-                        new Item {Brand = "Samsung",ItemName = "Camera",Price = 170 },
-                        new Item {Brand = "ASUS",ItemName = "Camera",Price = 10 },
-                        new Item {Brand = "Samsung",ItemName = "Camera",Price = 134 },
-                        new Item {Brand = "Lumia",ItemName = "Camera",Price = 1522 },
-                        new Item {Brand = "Samsung",ItemName = "Camera",Price = 134 },
-                        new Item {Brand = "IPHONE",ItemName = "Camera",Price = 112 },
-                        new Item {Brand = "Samsung",ItemName = "Camera",Price = 10 },
-                        new Item {Brand = "Micromax",ItemName = "Camera",Price = 200 },
-                        new Item {Brand = "Samsung",ItemName = "Camera",Price = 30 },
-                        new Item {Brand = "Samsung",ItemName = "Camera",Price = 330 },
-                        new Item {Brand = "Samsung",ItemName = "Camera",Price = 310 },
-                        new Item {Brand = "Samsung",ItemName = "Camera",Price = 300 },
-                        new Item {Brand = "Samsung",ItemName = "Camera",Price = 300 },
-                        new Item {Brand = "Samsung",ItemName = "Camera",Price = 300 },
-                        new Item {Brand = "Samsung",ItemName = "Camera",Price = 300 },
-                        new Item {Brand = "Samsung",ItemName = "Camera",Price = 300 },
-                        new Item {Brand = "Samsung",ItemName = "Camera",Price = 300 }
-                    };
+                    return GetItemsBasedOnFilter().Result;
+                    //return new ObservableCollection<Item>()
+                    //{
+                    //    new Item {Brand = "Samsung",PartName = "Camera",Price = 100 },
+                    //    new Item {Brand = "ASUS",PartName = "Camera",Price = 140 },
+                    //    new Item {Brand = "Samsung",PartName = "Camera",Price = 170 },
+                    //    new Item {Brand = "ASUS",PartName = "Camera",Price = 10 },
+                    //    new Item {Brand = "Samsung",PartName = "Camera",Price = 134 },
+                    //    new Item {Brand = "Lumia",PartName = "Camera",Price = 1522 },
+                    //    new Item {Brand = "Samsung",PartName = "Camera",Price = 134 },
+                    //    new Item {Brand = "IPHONE",PartName = "Camera",Price = 112 },
+                    //    new Item {Brand = "Samsung",PartName = "Camera",Price = 10 },
+                    //    new Item {Brand = "Micromax",PartName = "Camera",Price = 200 },
+                    //    new Item {Brand = "Samsung",PartName = "Camera",Price = 30 },
+                    //    new Item {Brand = "Samsung",PartName = "Camera",Price = 330 },
+                    //    new Item {Brand = "Samsung",PartName = "Camera",Price = 310 },
+                    //    new Item {Brand = "Samsung",PartName = "Camera",Price = 300 },
+                    //    new Item {Brand = "Samsung",PartName = "Camera",Price = 300 },
+                    //    new Item {Brand = "Samsung",PartName = "Camera",Price = 300 },
+                    //    new Item {Brand = "Samsung",PartName = "Camera",Price = 300 },
+                    //    new Item {Brand = "Samsung",PartName = "Camera",Price = 300 },
+                    //    new Item {Brand = "Samsung",PartName = "Camera",Price = 300 }
+                    //};
                 }
                 else
                     return _itemsList;
@@ -62,7 +62,7 @@ namespace PLK__
 
         private async Task<ObservableCollection<Item>> GetItemsBasedOnFilter()
         {
-            var items = await new ItemsManager().GetItems();
+            var items = await new ItemsManager().GetItemsBasedOnFilter().ConfigureAwait(false);
             return items;
         }
     }

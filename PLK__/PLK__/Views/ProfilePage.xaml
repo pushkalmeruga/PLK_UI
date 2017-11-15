@@ -3,16 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
              x:Class="PLK__.ProfilePage"
+             xmlns:local="clr-namespace:PLK__"
              Title="Profile Details">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ByteToImageFieldConverter x:Key="ByteArrayToImage"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="Save" Command="{Binding SaveProfileCommand}"/>
     </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Orientation="Vertical">
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="10">
-                    <Image x:Name="ProfilePicture" Source="{Binding ProfilePicture}"
+                    <Image x:Name="ProfilePicture" Source="{Binding ProfilePicture, Converter = {StaticResource ByteArrayToImage}}"
                             WidthRequest="100" HeightRequest="100" HorizontalOptions="CenterAndExpand"/>
                 </StackLayout>
 
@@ -27,16 +36,6 @@
                 <xfx:XfxEntry x:Name="Email" Placeholder="Email" TextColor="Black" Text="{Binding EmailId}" Style="{StaticResource TextBoxStyle}"/>
                 <xfx:XfxEntry x:Name="MobileNo" Placeholder="Mobile Number" TextColor="Black" Text="{Binding MobileNumber}" Style="{StaticResource TextBoxStyle}"/>
                 <xfx:XfxEntry x:Name="DefaultLocation" Placeholder="Enter Location" TextColor="Black" Text="{Binding DefaultLocation}" Style="{StaticResource TextBoxStyle}"/>
-                <Picker Title="Location" x:Name="LocationList">
-                    <Picker.Items>
-                        <x:String>Hyderabad</x:String>
-                        <x:String>Bangalore</x:String>
-                        <x:String>Vizag</x:String>
-                        <x:String>Delhi</x:String>
-                        <x:String>Amritsar</x:String>
-                        <x:String>Ranchi</x:String>
-                    </Picker.Items>
-                </Picker>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

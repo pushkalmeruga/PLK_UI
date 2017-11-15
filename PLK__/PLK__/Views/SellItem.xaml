@@ -2,9 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
-             x:Class="PLK__.SellItem">
+             x:Class="PLK__.SellItem"
+             Title="Add Item">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="Post Item"/>
+        <ToolbarItem Name="Post Item" Command="{Binding SaveItemCommand}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
@@ -14,6 +15,21 @@
                 <xfx:XfxEntry x:Name="Model" Placeholder="Model" TextColor="Black" Text="{Binding Model}" Style="{StaticResource TextBoxStyle}"/>
                 <xfx:XfxEntry x:Name="Brand" Placeholder="Brand" TextColor="Black" Text="{Binding Brand}" Style="{StaticResource TextBoxStyle}"/>
                 <xfx:XfxEntry x:Name="Price" Placeholder="Price" TextColor="Black" Text="{Binding Price}" Style="{StaticResource TextBoxStyle}"/>
+
+                <StackLayout HorizontalOptions="CenterAndExpand">
+                    <Label Text="Tap on the + icon to add images" FontSize="Medium" Style="{StaticResource LableStyle}"/>
+                </StackLayout>
+
+                <ScrollView Orientation="Horizontal" x:Name="ImagesScrollView" HorizontalOptions="Fill">
+                    <StackLayout x:Name="ItemImages" Orientation="Horizontal">
+                        <Image Source="plusIcon.png" HeightRequest="75" WidthRequest="75">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnPlusIconTapped" NumberOfTapsRequired="1" />
+                            </Image.GestureRecognizers>
+                        </Image>                        
+                    </StackLayout>
+                </ScrollView>
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

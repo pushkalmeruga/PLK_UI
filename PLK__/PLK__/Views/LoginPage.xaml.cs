@@ -15,8 +15,16 @@ namespace PLK__
         public LoginPage()
         {
             NavigationPage.SetHasNavigationBar(this, false);
-            //this.BackgroundImage = "Electronics2.jpg";
+
+            var profile = new SQLiteHelper().GetUserProfile();
+
+            if (profile != null)
+            { 
+               Navigation.PushAsync(new HamburgerPage(false));
+            }
+
             InitializeComponent();
+
             BindingContext = new LoginViewModel();
         }
 

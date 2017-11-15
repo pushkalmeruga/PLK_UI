@@ -9,7 +9,7 @@ namespace PLK__
 {
     public class RESTServiceHelper
     {
-        const string baseURL = "http://172.18.0.53:8080";
+        const string baseURL = "http://192.168.0.107:8080";
 
         public static async Task<string> GetData(string url)
         {
@@ -17,9 +17,9 @@ namespace PLK__
 
             client.BaseAddress = new Uri(baseURL);
 
-            HttpResponseMessage response = await client.GetAsync(url);
+            HttpResponseMessage response = await client.GetAsync(url).ConfigureAwait(false);
 
-            return await response.Content.ReadAsStringAsync();
+            return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
         }
 
         public static async Task<string> PostData(string url, string json)
@@ -32,9 +32,9 @@ namespace PLK__
 
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                HttpResponseMessage response = await client.PostAsync(url, content);
+                HttpResponseMessage response = await client.PostAsync(url, content).ConfigureAwait(false);
 
-                return await response.Content.ReadAsStringAsync();
+                return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             }
             catch (Exception ex)
             {

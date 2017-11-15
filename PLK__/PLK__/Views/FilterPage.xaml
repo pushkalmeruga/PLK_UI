@@ -5,7 +5,7 @@
              x:Class="PLK__.FilterPage"
              Title="Filter Items">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="Apply"/>
+        <ToolbarItem Name="Apply"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>

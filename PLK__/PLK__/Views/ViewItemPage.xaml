@@ -1,19 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PLK__.ViewItemPage">
+             x:Class="PLK__.ViewItemPage"
+             xmlns:local="clr-namespace:PLK__"
+             xmlns:carousel="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+             Title="View Item">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ListByteToImageFieldConverter x:Key="ListByteArrayToImage"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
-            <StackLayout Orientation="Horizontal" Padding="20">
-                <Image Source="http://cdn1.knowyourmobile.com/sites/knowyourmobilecom/files/styles/gallery_wide/public/2017/03/screen_shot_2017-03-29_at_17.33.49.png"
-                            WidthRequest="150" HeightRequest="150" HorizontalOptions="CenterAndExpand"/>
+        <ScrollView>
+            <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Horizontal" Padding="20" HeightRequest="150">
+                    <carousel:CarouselView x:Name="ItemImagesCarousel" ItemsSource="{Binding ItemImages, Converter = {StaticResource ListByteArrayToImage}} ">
+                        <carousel:CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Image Source="{Binding .}" WidthRequest="150" HeightRequest="150" HorizontalOptions="CenterAndExpand"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </carousel:CarouselView.ItemTemplate>
+                    </carousel:CarouselView>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" Padding="20,0,0,0">
+                        <Label Text="Details :" FontSize="Large" TextColor="Black"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="20,0,0,0">
+                        <Label Text="Although in my test, the width request is not being followed." FontSize="Medium" TextColor="Gray"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Padding="20,0,0,0" HorizontalOptions="StartAndExpand">
+                        <Label Text="{Binding Price, StringFormat='Price : {0}/-'}" FontSize="Small" TextColor="Gray"/>
+                        <Label Text="{Binding Brand, StringFormat='Brand : {0}'}" FontSize="Small" TextColor="Gray"/>
+                        <Label Text="{Binding PartName, StringFormat='Part Name : {0}'}" FontSize="Small" TextColor="Gray"/>
+                        <Label Text="{Binding Model, StringFormat='Model Name : {0}'}" FontSize="Small" TextColor="Gray"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Padding="20">
+                        <Button Text="Call Owner" Clicked="CallUser" BackgroundColor="#f29f52" FontSize="Small"/>
+                        <Button Text="Email Owner" Clicked="CallUser" BackgroundColor="#f29f52" FontSize="Small"/>
+                    </StackLayout>
+                </StackLayout>
             </StackLayout>
-            <StackLayout Orientation="Vertical" HorizontalOptions="Center">
-                <Label Text="{Binding SelectedItem.Brand, StringFormat='Brand: {0}'}" FontSize="Large"/>
-                <Label Text="{Binding SelectedItem.Price, StringFormat= 'Price: {0}'}" FontSize="Large"/>
-                <Button Text="BUY ITEM" Clicked="CallUser"/>
-            </StackLayout>
-            
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

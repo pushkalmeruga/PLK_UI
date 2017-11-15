@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CommonHelper.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Managers\ItemsManager.cs" />
     <Compile Include="Helpers\RESTServiceHelper.cs" />
